@@ -27,7 +27,7 @@ class InputGroupText extends Component {
                 <TextInput 
                 secureTextEntry={this.props.secureTextEntry}
                 style={{ 
-                    // backgroundColor:'grey',
+                    fontSize:14,
                     height: 55,
                     width: 280,
                     borderRadius: 20,
