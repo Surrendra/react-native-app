@@ -6,7 +6,7 @@ class FlexBox extends Component{
     render() {
         return (
             <View>
-                <View style={{
+                {/* <View style={{
                     flexDirection: 'row',
                     backgroundColor: 'grey',
                     alignItems: 'center',
@@ -24,7 +24,7 @@ class FlexBox extends Component{
                     <Text>Video</Text>
                     <Text>Playlist</Text>
                     <Text>Community</Text>
-                </View>
+                </View> */}
                 <View style={{ 
                     flexDirection:'row',
                     alignItems:'center',
