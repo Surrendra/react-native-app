@@ -7,7 +7,7 @@ import PasswordImage from '../../assets/images/password.png';
 import AppNavigation from "../AppNavigation";
 
 
-function Login(AppNavigation) {
+function Login({navigation}) {
     return (
         <SafeAreaView>
             <View style={LoginStyle.page}>
@@ -42,7 +42,7 @@ function Login(AppNavigation) {
                         }}
                         title="MASUK"
                         color="#FFFFFF"
-                        // onPress={() => AppNavigation}
+                        onPress={() => navigation.navigate('LoginScreen')}
                     />
                 </View>
             </View>

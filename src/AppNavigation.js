@@ -11,8 +11,8 @@ function AppNavigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
+                <Stack.Screen name="LoginScreen" component={LoginScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
