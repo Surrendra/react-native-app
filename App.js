@@ -1,12 +1,12 @@
 import React from "react";
-import AppNavigator from "./src/AppNavigation";
-
+import { Text } from "react-native";
+import AppNavigation from "./src/AppNavigation";
 
 const App = () => {
   return (
-      <AppNavigator/>
+      <AppNavigation/>
   )
 }
 
 
-export default App
+export default App 

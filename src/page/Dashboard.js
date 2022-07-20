@@ -57,3 +57,5 @@ class Dashboard extends Component {
         )
     }
 }
+
+export default Dashboard;

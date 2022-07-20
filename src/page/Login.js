@@ -6,14 +6,21 @@ import UsernameImage from '../../assets/images/username.png';
 import PasswordImage from '../../assets/images/password.png';
 import AppNavigation from "../AppNavigation";
 
+const submit = () => {
+    const payload = {
+        name:"Surendra",
+        email:"made.surendra@baliprov.go.id"
+    }
+    console.log(payload);
+}
 
 function Login({navigation}) {
     return (
         <SafeAreaView>
             <View style={LoginStyle.page}>
                 <View>
-                    <Text style={LoginStyle.title}>S E L A M A T  D A T A N G</Text>
-                </View>
+                    <Text style={LoginStyle.title}>SELAMAT DATANG</Text>
+               </View>
                 <Image source={KanalLogo} style={LoginStyle.logo} />
                 <View style={LoginStyle.inputGroup}>
                     {/* <TextInput style={LoginStyle.inputText} /> */}
@@ -42,7 +49,16 @@ function Login({navigation}) {
                         }}
                         title="MASUK"
                         color="#FFFFFF"
-                        onPress={() => navigation.navigate('LoginScreen')}
+                        onPress={submit}
+                    />
+
+                    <Button
+                        style={{ 
+                            marginTop:30,
+                         }}
+                        title="Home"
+                        color="#FFFFFF"
+                        onPress={() => navigation.navigate('Home')}
                     />
                 </View>
             </View>
@@ -60,7 +76,8 @@ const LoginStyle = StyleSheet.create({
         // fontWeight:'bold',
         color: '#232323',
         fontSize:22,
-        marginHorizontal:42
+        marginHorizontal:42,
+        letterSpacing:3,
     },
     logo:{
         alignSelf:'center',
