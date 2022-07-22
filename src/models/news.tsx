@@ -1,0 +1,34 @@
+export interface NewsModel {
+    news_id: number
+    pelapor_id: number
+    publish_pelapor_id: number
+    comment_count: number
+    news_judul: string
+    news_slug: string
+    news_isi: string
+    news_gambar: string
+    news_gambar_resize: string
+    category_id: number
+    news_tgl: string
+    comment_scope: string
+    news_publish: number
+    news_youtube_url: any
+    news_note: any
+    is_share: number
+    start_periode_share: any
+    end_periode_share: any
+    status: string
+    publish_at: string
+    wp_id: number
+    wp_callback_id: number
+    created_at: string
+    updated_at: string
+    news_youtube_id: any
+    dynamic_link: string
+    is_live: number
+    live_at: any
+    is_favorite: number
+    is_shared_by_pelapor: number
+    url_news_gambar: string
+    url_news_gambar_resize: string   
+}

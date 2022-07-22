@@ -1,8 +1,30 @@
-import React from "react";
-import { View,Text, ScrollView,StyleSheet,SafeAreaView } from "react-native";
+import React, { useState } from "react";
+import { View,Text, ScrollView,StyleSheet,SafeAreaView, FlatList } from "react-native";
 import Item from "../components/Item";
+import { products } from "../Payload";
+
 
 const ItemList = () => {
+    const [totalProduct, setTotalProduct] = useState(0)
+
+    const RenderItem = ({item}) => {
+        return <Item 
+            name={item.title} 
+            price={item.price} 
+            category_name={item.type} 
+            updateTotalProduct={() => updateTotalProduct()} 
+            decreeTotalProduct={() => decreeTotalProduct()}
+        />
+    }
+
+    function decreeTotalProduct() {
+        setTotalProduct(totalProduct - 1);
+    }
+
+    function updateTotalProduct() {
+        setTotalProduct(totalProduct + 1);
+    }
+
     return (
         <SafeAreaView>
             <View style={{
@@ -37,7 +59,7 @@ const ItemList = () => {
                         width: 160,
                         // backgroundColor:'grey',
                     }}>
-                        3 Item
+                        {totalProduct} Item
                     </Text>
                     <Text style={style.TextHeaderTwo}>
                         Select All
@@ -48,20 +70,12 @@ const ItemList = () => {
                 </View>
             </View>
             <View>
-                <ScrollView>
-                    <View>
-                        <Item name="Metal Earrings" price="$20" category_name="Special Design" />
-                        <Item name="Earrings" price="$16" category_name="Special Design" />
-                        <Item name="Scarf" price="$15" category_name="Special Design" />
-                        <Item name="Tote Bag" price="$89" category_name="Special Design" />
-                        <Item name="Shipping address" price="$25" category_name="Special Design" />
-                        <Item name="Metal Earrings" price="$20" category_name="Special Design" />
-                        <Item name="Earrings" price="$16" category_name="Special Design" />
-                        <Item name="Scarf" price="$15" category_name="Special Design" />
-                        <Item name="Tote Bag" price="$89" category_name="Special Design" />
-                        <Item name="Shipping address" price="$25" category_name="Special Design" />
-                    </View>
-                </ScrollView>
+                <FlatList
+                    data={products}
+                    renderItem={RenderItem}
+                    keyExtractor={item => item.id}
+                >
+                </FlatList>
             </View>
         </SafeAreaView>
         

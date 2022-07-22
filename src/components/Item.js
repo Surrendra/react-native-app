@@ -1,9 +1,16 @@
-import React from "react";
-import { View,Text,StyleSheet,Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View,Text,StyleSheet,Image, TouchableOpacity } from "react-native";
 import macbook from "../../assets/images/macbook.jpeg"
 
+const value = 0;
+
+const updateTotalQty = (props) => {
+    props.decreeTotalProduct;
+    value = value + 1;
+}
 
 const Item = (props) => {
+    const [totalQty,setTotalQty] = useState(0);
     return (
         <View>
             <View style={{ 
@@ -80,9 +87,13 @@ const Item = (props) => {
                             justifyContent: 'space-around',
                             marginRight:10,
                         }}>
-                            <Text style={style.navigation}> - </Text>
-                            <Text style={style.navigation}> 0 </Text>
-                            <Text style={style.navigation}> + </Text>
+                            <TouchableOpacity onPress={props.decreeTotalProduct}>
+                                <Text style={style.navigation}> - </Text>
+                            </TouchableOpacity>
+                            <Text style={style.navigation}>{totalQty}</Text>
+                            <TouchableOpacity onPress={props.updateTotalProduct}>
+                                <Text style={style.navigation}> + </Text>
+                            </TouchableOpacity>
                         </View>
                         <View style={{ 
                             backgroundColor: '#BBBBBB',
