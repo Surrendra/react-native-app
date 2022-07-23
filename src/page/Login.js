@@ -1,20 +1,35 @@
-import React, { Component } from "react";
+import React, { Component, useState, useContext } from "react";
 import { SafeAreaView, View, Text, StyleSheet, Image,Button } from "react-native";
 import InputGroupText from "../components/InputGroupText";
 import KanalLogo from '../../assets/images/kanal.png';
 import UsernameImage from '../../assets/images/username.png';
 import PasswordImage from '../../assets/images/password.png';
 import AppNavigation from "../AppNavigation";
+import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from "../auth/AuthProvider";
+import axios from "axios";
 
-const submit = () => {
+const  submit = (username,password) => {
     const payload = {
-        name:"Surendra",
-        email:"made.surendra@baliprov.go.id"
+        username:username,
+        password:password
     }
-    console.log(payload);
+    const url = 'https://kanal.baliprov.dev/api/login';
+    return axios.post(url, payload)
+    .then(function (response) {
+        alert(response.data.message);
+        return true;
+    })
+    .catch(function (error) {
+        alert(error.response.data.message);
+        return false
+    });    
 }
 
 function Login({navigation}) {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('')
+    const { signup } = useContext(AuthContext); 
     return (
         <SafeAreaView>
             <View style={LoginStyle.page}>
@@ -24,8 +39,17 @@ function Login({navigation}) {
                 <Image source={KanalLogo} style={LoginStyle.logo} />
                 <View style={LoginStyle.inputGroup}>
                     {/* <TextInput style={LoginStyle.inputText} /> */}
-                    <InputGroupText icon={UsernameImage} />
-                    <InputGroupText icon={PasswordImage} secureTextEntry={true} />
+                    <InputGroupText 
+                        icon={UsernameImage}
+                        value={username}
+                        onChangeText={username => setUsername(username)} 
+                    />
+                    <InputGroupText 
+                        icon={PasswordImage} 
+                        value={password}
+                        secureTextEntry={true} 
+                        onChangeText={password => setPassword(password)} 
+                    />
                     <Text style={{
                         alignSelf: 'flex-end',
                         color: 'blue',
@@ -49,16 +73,13 @@ function Login({navigation}) {
                         }}
                         title="MASUK"
                         color="#FFFFFF"
-                        onPress={submit}
-                    />
-
-                    <Button
-                        style={{ 
-                            marginTop:30,
-                         }}
-                        title="Home"
-                        color="#FFFFFF"
-                        onPress={() => navigation.navigate('Home')}
+                        onPress={() => {
+                            submit(username, password).then((success) => {
+                                if (success) {
+                                    navigation.navigate('DashboardScreen');
+                                }
+                            });
+                        }}
                     />
                 </View>
             </View>
